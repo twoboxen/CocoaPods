@@ -119,6 +119,7 @@ describe_cli 'pod' do
     s.replace_pattern /#{Dir.tmpdir}\/[\w-]+/i, 'TMPDIR'
     s.replace_pattern /\d{4}-\d\d-\d\d \d\d:\d\d:\d\d [-+]\d{4}/, '<#DATE#>'
     s.replace_pattern /\(Took \d+.\d+ seconds\)/, '(Took <#DURATION#> seconds)'
+    s.replace_path %r{`[^`]*?([[[:alnum:]]_+-]+)-([[:xdigit:]]+|#{Gem::Version::VERSION_PATTERN})/lib/cocoapods_plugin.rb}, '`\1/lib/cocoapods_plugin.rb'
   end
 
   describe 'Pod install' do
